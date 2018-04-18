@@ -64,6 +64,22 @@ struct modeStruct {
     double am, ap;
     std::unique_ptr<EngngModel> myEngngModel;
     std :: vector<SurfaceDataStruct> SurfaceData;
+	modeStruct(const modeStruct &ms2)
+	{
+		am = ms2.am;
+		ap = ms2.ap;
+		// myEngngModel = std::move(ms2.myEngngModel);
+		SurfaceData = ms2.SurfaceData;
+	}
+	modeStruct& operator =(const modeStruct &ms2)
+	{
+		am = ms2.am;
+		ap = ms2.ap;
+		// myEngngModel = std::move(ms2.myEngngModel);
+		SurfaceData = ms2.SurfaceData;
+		return *this;
+	}
+	modeStruct() {}
 };
 
 class OOFEM_EXPORT SolutionbasedShapeFunction : public ActiveBoundaryCondition

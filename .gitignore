@@ -9,6 +9,9 @@ targets/
 release/
 debug/
 
+# ignore build dir created by xp
+build/
+
 # test results
 *.out
 *.vtu
