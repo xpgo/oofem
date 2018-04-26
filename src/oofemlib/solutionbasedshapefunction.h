@@ -64,7 +64,10 @@ struct modeStruct {
     double am, ap;
     std::unique_ptr<EngngModel> myEngngModel;
     std :: vector<SurfaceDataStruct> SurfaceData;
-	modeStruct(const modeStruct &ms2)
+#ifdef _WIN32
+    // in visual studio 2015, there will be compile error,
+    // since unique_ptr var can not be copied.
+    modeStruct(const modeStruct &ms2)
 	{
 		am = ms2.am;
 		ap = ms2.ap;
@@ -80,6 +83,7 @@ struct modeStruct {
 		return *this;
 	}
 	modeStruct() {}
+#endif
 };
 
 class OOFEM_EXPORT SolutionbasedShapeFunction : public ActiveBoundaryCondition

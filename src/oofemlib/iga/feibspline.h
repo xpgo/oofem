@@ -37,7 +37,9 @@
 
 #include "feinterpol.h"
 #include "floatarray.h"
+#ifdef _WIN32
 #include <array>
+#endif
 
 ///@name Input fields for BSplineInterpolation
 //@{

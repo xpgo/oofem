@@ -251,7 +251,10 @@ BeamElementErrorCheckingRule :: check(Domain *domain, TimeStep *tStep)
 
     if (ist == BET_localEndDisplacement) {
       element->computeVectorOf(VM_Total, tStep, val);
-    } else if (ist ==  BET_localEndForces) {
+    }
+#ifdef __SM_MODULE
+	else if (ist ==  BET_localEndForces) {
+
       if(Beam2d* b = dynamic_cast<Beam2d*>(element)) b->giveEndForcesVector(val, tStep);
       else if(Beam3d* b = dynamic_cast<Beam3d*>(element)) b->giveEndForcesVector(val, tStep);
       else {
@@ -259,6 +262,7 @@ BeamElementErrorCheckingRule :: check(Domain *domain, TimeStep *tStep)
         return false;
       }
     }
+#endif
 
     if ( component > val.giveSize() || component < 1 ) {
         OOFEM_WARNING("Check failed in %s: beam_element %d, ist %d, component %d:\n"
