@@ -133,7 +133,7 @@ Quasicontinuum :: createInterpolationElements(Domain *d)
      */
 
     // add interpolation elements (with new CS and no mat)
-    const char *elemType;
+    const char *elemType = NULL;
     if ( interpolationMeshNodes.size() != 0 ) {
         // for 2d
         if ( nDimensions == 2 ) {
@@ -147,7 +147,7 @@ Quasicontinuum :: createInterpolationElements(Domain *d)
 
     int nelem = d->giveNumberOfElements();
     int elemNumber;
-    Element *elem;
+    Element *elem = NULL;
     DynamicInputRecord irEl;
     // over interpolation elements
     for ( int i = 1; i <= ninterpelem; i++ ) {

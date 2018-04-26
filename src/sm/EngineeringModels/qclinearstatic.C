@@ -708,7 +708,7 @@ QClinearStatic :: findNearestParticle(Domain *d, FloatArray coords)
     // TO DO: use octree here
     double minDistance = 1.0e100;
     double distance;
-    DofManager *p;
+    DofManager *p = NULL;
     // loop over all particles (nodes in existing domain)
     for ( int i = 1; i <= d->giveNumberOfDofManagers(); i++ ) {
         distance = coords.distance( d->giveDofManager(i)->giveCoordinates() );
